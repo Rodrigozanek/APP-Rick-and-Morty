@@ -9,7 +9,7 @@ export default function Cards(props) {
          <Card
          id={id}
          key={id}
-         name={id}
+         name={name}
          species={species}
          gender={gender}
          image={image}
