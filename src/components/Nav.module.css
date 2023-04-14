@@ -1,0 +1,43 @@
+.idContenedor{
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: black;
+    margin-bottom: 10px;
+    height: 80px;
+}
+.idLogout{
+    display: flex;
+    margin-left: 14%;
+    height: 40px;
+    margin-top: 10px;
+    flex-direction: column;
+    
+   
+}
+
+.idLink{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-left: 7%;
+    /* margin-top: 20px; */
+}
+
+.idSpanLink{
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.botonLogOut{
+    background-color: brown;
+    color: white;
+    border-radius: 20px;
+    height: 30px;
+}
+
+.botonLogOut:hover{
+    background-color:grey;
+    border: 1.5px solid black;
+    color: white;
+}

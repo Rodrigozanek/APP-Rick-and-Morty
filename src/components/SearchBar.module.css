@@ -1,0 +1,36 @@
+.buttonSearch{
+    background-color: #82a43a;
+    border: 5px solid #769238;
+    border-radius:5px;
+    font: Roboto;
+    width:75px;
+    height:30px;
+    margin-top: 9px;
+    
+}
+.buttonSearch:hover{
+    background-color:grey;
+    border: 1.5px solid black;
+    color: white;
+    
+}
+
+.search{
+ border-radius:50px;
+ height:35px;
+ width: 300px;
+ font:Roboto;
+ font: 10px;
+ padding-left: 20px;
+}
+
+.div {
+     background-color: transparent;
+     margin-top: 8px;
+     width: -40vw;
+     height: 8vh;
+     margin-left: 400px;
+     margin-top: 20px;
+     
+
+}
