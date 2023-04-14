@@ -8,6 +8,7 @@ import store from './components/redux/store'
 
 
 ReactDOM.render(
+  
   <Provider store={store}>
     <BrowserRouter>
       <App />
