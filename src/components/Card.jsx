@@ -27,7 +27,6 @@ function Card({name, image, species, gender, onClose, id, myFavorites, removeFav
 
    return (
       <div className={Estilos.idCard}>
-         <br />
          <div className={Estilos.idCorazon}>
          {
       isFav ? (
