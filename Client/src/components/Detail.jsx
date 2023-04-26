@@ -6,15 +6,17 @@ import { Link } from "react-router-dom";
 
 export default function Detail() {
     const {detailId} = useParams();
-    const navigate = useNavigate()
+    // const navigate = useNavigate()
     const [character, setCharacter] = useState({});
 
     // function navegar (){
     //     navigate(-1)
     // }
 
+  
     useEffect(() => {
-        fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
+        // fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
+        fetch(`http://localhost:3001/rickandmorty/character/${detailId}`)
           .then((response) => response.json())
           .then((char) => {
             if (char.name) {
@@ -45,3 +47,4 @@ export default function Detail() {
         </div>
     )
 }
+
