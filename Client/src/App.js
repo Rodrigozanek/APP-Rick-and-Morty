@@ -10,6 +10,7 @@ import Detail from './components/Detail'
 import Form from './components/Form'
 import {Routes, Route, useLocation, useNavigate} from 'react-router-dom'
 import Favorites from './components/Favorites/Favorites.jsx'
+import axios from 'axios'
 
 
 function App () {
@@ -24,29 +25,65 @@ function App () {
     !access && navigate('/');
   }, [access])
 
-  function login(userData){
-    if(userData.username === username && userData.password === password){
-      setAccess(true);
-      navigate('/home');
-    }
-  };
+//   function login(userData) {
+//     const { username: email, password } = userData;
+//     const URL = 'http://localhost:3001/rickandmorty/login/';
+//     axios(URL + `?email=${email}&password=${password}`).then(({ data }) => {
+//        const { access } = data;
+//        setAccess(data);
+//        access && navigate('/home');
+//     });
+//  }
+
+      const login = async (userData) => {
+        try {
+          const { username: email, password } = userData;
+          const URL = 'http://localhost:3001/rickandmorty/login/';
+         const {data} = await axios(`${URL}?email=${email}&password=${password}`)
+         const { access } = data;
+                    setAccess(data);
+                    access && navigate('/home');
+        } catch (error) {
+          alert(error.message)
+        }
+      }
+  
+ //----------------------------------------------------------------------------------
+  // function login(userData){
+  //   if(userData.email === email && userData.password === password){
+  //     setAccess(true);
+  //     navigate('/home');
+  //   }
+  // };
 
   function logout(){
     setAccess(false)
     navigate('/')
   }
 
-  const onSearch = (id) =>{
-    // fetch(`https://rickandmortyapi.com/api/character/${id}`)
-    fetch( `http://localhost:3001/rickandmorty/character/${id}`)
-    .then((res)=> res.json())
-    .then((data)=>{
-      data.name 
-               ? setCharacter ([...characters, data])
-               :alert ("Carta inexistente!!")
-    })
-    .catch((error)=> console.log(error))
+  const onSearch = async (id) => {
+    try {
+      const {data} = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+      const char = characters.find((char)=> char.id === id)
+      if(id){
+        if(char)return alert("personaje ya existente");
+        setCharacter([...characters, data])
+      }
+    } catch (error) {
+      alert("Algo salio mal " + error.message)
+    }
   }
+
+  // const onSearch = (id) =>{
+  // fetch(`http://localhost:3001/rickandmorty/character/${id}`)
+  //   .then((res)=> res.json())
+  //   .then((data)=>{
+  //     data.name 
+  //              ? setCharacter ([...characters, data])
+  //              :alert ("Carta inexistente!!")
+  //   })
+  //   .catch((error)=> console.log(error))
+  // }
 
   const onClose = (id) => {
     const filtro = characters.filter((char) =>char.id !== Number (id))

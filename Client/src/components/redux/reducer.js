@@ -6,25 +6,23 @@ const  initialState = {
 const reducer = (state = initialState, {type, payload}) => {
     switch (type) {
         case 'ADD_FAVORITE':
-            return{
-                ...state,
-                allCharacters: [...state.allCharacters, payload],
-                myFavorites: [...state.allCharacters, payload]
-            };
-            // let copy1 = state.myFavorites;
-            // copy1.push(payload)
-            // return{...state, myFavorites: copy1};
+            return { ...state, myFavorites: payload, allCharacters: payload };
+        // case 'ADD_FAVORITE':
+        //     return{
+        //         ...state,
+        //         allCharacters: [...state.allCharacters, payload],
+        //         myFavorites: [...state.allCharacters, payload]
+        //     };
 
         case 'REMOVE_FAVORITE':
-            const filtro = state.myFavorites.filter((character) =>character.id !== payload)
-            return{
-                ...state,
-                myFavorites: filtro
-            }
-            // let copy2 = state.myFavorites.filter((char) =>{
-            // return char.id !== Number(payload)
-            // });
-            // return {...state, myFavorites: copy2};
+            return { ...state, myFavorites: payload };
+        // case 'REMOVE_FAVORITE':
+        //     const filtro = state.myFavorites.filter((character) =>character.id !== payload)
+        //     return{
+        //         ...state,
+        //         myFavorites: filtro
+        //     }
+          
         case 'FILTER':
             const filtroGender = [...state.allCharacters].filter((char)=>char.gender === payload)
             return{

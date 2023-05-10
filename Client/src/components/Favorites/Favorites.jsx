@@ -3,7 +3,7 @@ import Card from '../Card'
 import Estilos from './favorites.module.css'
 import { useDispatch } from "react-redux";
 import {orderCards, filterCards} from '../redux/actions'
-
+//linea 6
 function Favorites({myFavorites}){
  const dispatch = useDispatch();
     return(
