@@ -9,7 +9,6 @@ const getCharById = async (req, res) => {
         const response = await axios(url + id)
         try {
             if(response.data){
-                console.log(response.data);
                 //si esxiste el personaje
                 let {id, status, name, species, origin, image, gender} = response.data
                 const charObj = {id, status, name, species, origin, image, gender} 
