@@ -2,18 +2,22 @@ import Card from './Card';
 import Estilos from './Cards.module.css'
 
 export default function Cards(props) {
-   const { characters } = props;
+   const { characters, onClose } = props;
    return (
      <div className={Estilos.contenedor}>
-      {characters.map(({id, name, species, gender, image}) =>(
+      {characters.map(character =>(
          <Card
-         id={id}
-         key={id}
-         name={name}
-         species={species}
-         gender={gender}
-         image={image}
-         onClose={() => props.onClose(id)}
+         id={character.id}
+         key={character.id}
+         name={character.name}
+         species={character.species}
+         gender={character.gender}
+         image={character.image}
+         onClose={onClose}
+         origin={character.origin?.name}
+         status={character.status}
+
+         // onClose={() => props.onClose(id)}
          />))}
      </div>
    );

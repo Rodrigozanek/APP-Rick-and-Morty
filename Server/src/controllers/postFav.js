@@ -3,7 +3,7 @@ const { Favorite } = require('../DB_connection');
 const postFav = async (req, res) =>{
 
     const { name, origin, status, image, species, gender } = req.body;
-
+        console.log(req.body);
     try {
         if (!name || !origin || !status || !image || !species || !gender)
             return res,status(404).send("Faltan datos");

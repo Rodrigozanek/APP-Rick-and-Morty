@@ -4,7 +4,7 @@ import { addFav, removeFav } from './redux/actions';
 import { connect } from "react-redux";
 import { useState, useEffect } from "react";
 
-function Card({name, image, species, gender, onClose, id, myFavorites, removeFav, addFav}) {
+function Card({origin, status, name, image, species, gender, onClose, id, myFavorites, removeFav, addFav}) {
    const [isFav, setIsFav] = useState(false);
 
    const handleFavorite = () => {
@@ -13,7 +13,7 @@ function Card({name, image, species, gender, onClose, id, myFavorites, removeFav
       removeFav(id);
     }else{
       setIsFav(true)
-      addFav({name, image, species, gender, onClose, id})
+      addFav({origin, status, name, image, species, gender, onClose, id})
     }
    }
 
@@ -37,7 +37,7 @@ function Card({name, image, species, gender, onClose, id, myFavorites, removeFav
       }
          </div>
          
-         <button className={Estilos.idBoton} onClick={onClose}>X</button>
+         <button className={Estilos.idBoton} onClick={()=>onClose(id)}>X</button>
          <Link to={`/detail/${id}`}>
          <h2>{name}</h2>
          <img  src={image} alt="image not found" />
